@@ -13,10 +13,10 @@ Filtros de Busca: para filtrar a pesquisa, como por faixa de preço.
 Ferramentas
 
 Front-end:
-HTML
-CSS
-JavaScript
+HTML;
+CSS;
+JavaScript.
 
 Back-End:
-Python
-Banco de Dados: MySQL
+Python;
+Banco de Dados: MySQL.
