@@ -14,8 +14,8 @@
                 <li><a href="/compartilhar" target="_self">Compartilhe Sua Residência</a></li>
 
                 {% if session['usuario_id'] %}
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     <li><a href="{{ url_for('meus_imoveis') }}">Meus imoveis</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                 {% endif %}
