@@ -28,7 +28,7 @@ class Imovel(db.Model):
 with app.app_context():
     db.create_all()
 
-# Função para verificar a extensão do arquivo
+# Função para analisar a extensão do arquivo
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
