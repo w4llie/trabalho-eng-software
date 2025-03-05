@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniAnita - Aluguel de Imóveis</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>UniAnita - Aluguel de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="/compartilhar" target="_self">Compartilhe Sua Residência</a></li>
+
+                {% if session['usuario_id'] %}
+                    <li><a href="{{ url_for('meus_imoveis') }}">Meus imoveis</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Barra de Pesquisa -->
+    <section class="barra-pesquisa">
+        <form method="GET" action="{{ url_for('index') }}">
+            <input type="text" name="query" class="barra-pesquisa-input" placeholder="Pesquise por uma rua ou bairro" value="{{ request.args.get('query', '') }}">
+            <button type="submit" class="barra-pesquisa-btn">Pesquisar</button>
+        </form>
+    </section>
+
+    <!-- Listagem de Imóveis -->
+    <section class="listagem">
+        {% if not imoveis %}
+            <p>Nenhum imóvel encontrado para sua pesquisa.</p>
+        {% else %}
+            {% for imovel in imoveis %}
+                <div class="casa">
+                    {% if imovel.imagem %}
+                        <img src="{{ url_for('static', filename='uploads/' + imovel.imagem) }}" alt="{{ imovel.nome }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='default.jpg') }}" alt="{{ imovel.nome }}">
+                    {% endif %}
+                    <p>R$ {{ imovel.valor }}/mês</p>
+                    <p>Endereço: {{ imovel.endereco }}</p>
+                    <p>Bairro: {{ imovel.bairro }}</p>
+                    <p>Contato: {{ imovel.usuario.contato }}</p>
+                    <p>E-mail: {{ imovel.usuario.email }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - UniAnita | Aluguel de Imóveis</p>
+    </footer>
+</body>
+</html>

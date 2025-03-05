@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Imóveis - UniAnita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Meus Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Imóveis que você cadastrou</h2>
+
+        {% if imoveis %}
+            <ul>
+                {% for imovel in imoveis %}
+                    <li>
+                        <h3>{{ imovel.nome }}</h3>
+                        <p>Bairro: {{ imovel.bairro }}</p>
+                        <p>Valor: R$ {{ imovel.valor }}</p>
+                        {% if imovel.imagem %}
+                            <img src="{{ url_for('static', filename='uploads/' + imovel.imagem) }}" alt="Imagem do imóvel" width="200">
+                        {% endif %}
+                        <form action="{{ url_for('deletar_imovel', id=imovel.id) }}" method="POST">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Você ainda não cadastrou nenhum imóvel.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - UniAnita | Aluguel de Imóveis</p>
+    </footer>
+</body>
+</html>
