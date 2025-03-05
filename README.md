@@ -1,4 +1,4 @@
-Este projeto consiste em um site, chamado "UniAnita", de pesquisa e aluguel de imóveis no município de Itapajé. Neste site, os estudantes universitários também poderão colocar sua residência em anúncio para compartilhar com outros estutantes. Contratos e pagamentos não serão feitos neste site, será fornecido apenas o contato.
+Este projeto consiste em um site, chamado "UniAnita", de pesquisa e aluguel de imóveis no município de Itapajé. Neste site, os estudantes universitários também poderão colocar sua residência em anúncio para compartilhar com outros estutantes. Contratos e pagamentos não serão realizados neste site, será fornecido apenas o contato.
 
 Funcionalidades
 
