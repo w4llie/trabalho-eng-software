@@ -11,8 +11,15 @@
         <h1>UniAnita - Aluguel de Imóveis</h1>
         <nav>
             <ul>
-                <li><a href="/" target="_self">Início</a></li>
                 <li><a href="/compartilhar" target="_self">Compartilhe Sua Residência</a></li>
+
+                {% if session['usuario_id'] %}
+                    <li><a href="{{ url_for('meus_imoveis') }}">Meus imoveis</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+
             </ul>
         </nav>
     </header>
@@ -37,11 +44,11 @@
                     {% else %}
                         <img src="{{ url_for('static', filename='default.jpg') }}" alt="{{ imovel.nome }}">
                     {% endif %}
-                    <h2>{{ imovel.nome }}</h2>
                     <p>R$ {{ imovel.valor }}/mês</p>
-                    <p>{{ imovel.endereco }}</p>
-                    <p>{{ imovel.bairro }}</p>
-                    <a href="#" class="botao">Ver Detalhes</a>
+                    <p>Endereço: {{ imovel.endereco }}</p>
+                    <p>Bairro: {{ imovel.bairro }}</p>
+                    <p>Contato: {{ imovel.usuario.contato }}</p>
+                    <p>E-mail: {{ imovel.usuario.email }}</p>
                 </div>
             {% endfor %}
         {% endif %}
