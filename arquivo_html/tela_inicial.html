@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniAnita - Aluguel de Imóveis</title>
+    <link rel="stylesheet" href="../testecss/style_inicio.css">
+</head>
+<body>
+    <header>
+        <h1>UniAnita - Aluguel de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="tela_inicial.html" target="_self">Início</a></li>
+                <li><a href="cadastrar_casa.html" target="_self">Cadastrar Residência</a></li>
+                <li><a href="compartilhamento.html" target="_self">Compartilhar Residência</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Barra de Pesquisa -->
+    <section class="barra-pesquisa">
+        <form method="GET" action="{{ url_for('index') }}">
+            <input type="text" name="query" class="barra-pesquisa-input" placeholder="Pesquise por uma rua ou bairro" value="{{ request.args.get('query', '') }}">
+            
+            <select name="tipo_residencia" class="barra-pesquisa-select">
+                <option value="">Tipo de Residência</option>
+                <option value="casa" {% if request.args.get('tipo_residencia') == 'casa' %}selected{% endif %}>Casa</option>
+                <option value="apartamento" {% if request.args.get('tipo_residencia') == 'apartamento' %}selected{% endif %}>Apartamento</option>
+                <option value="kitnet" {% if request.args.get('tipo_residencia') == 'kitnet' %}selected{% endif %}>Kitnet</option>
+            </select>
+
+            <label for="faixa_preco_max">Preço Máximo (R$):</label>
+            <input type="number" id="faixa_preco_max" name="faixa_preco_max" class="barra-pesquisa-input" placeholder="Digite o preço máximo" value="{{ request.args.get('faixa_preco_max', '') }}">
+
+            <select name="bairro" class="barra-pesquisa-select">
+                <option value="">Selecione o Bairro</option>
+                {% for bairro in bairros %}
+                    <option value="{{ bairro[0] }}" {% if request.args.get('bairro') == bairro[0] %}selected{% endif %}>{{ bairro[0] }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="barra-pesquisa-btn">Pesquisar</button>
+        </form>
+    </section>
+
+    <!-- Listagem de Imóveis -->
+    <section class="listagem">
+        {% if not imoveis %}
+            <p>Nenhum imóvel encontrado para sua pesquisa.</p>
+        {% else %}
+            {% for imovel in imoveis %}
+                <div class="casa">
+                    {% if imovel.imagem %}
+                        <img src="{{ url_for('static', filename='uploads/' + imovel.imagem) }}" alt="{{ imovel.nome }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='default.jpg') }}" alt="{{ imovel.nome }}">
+                    {% endif %}
+                    <h2>{{ imovel.nome }}</h2>
+                    <p>R$ {{ imovel.valor }}/mês</p>
+                    <p>{{ imovel.endereco }}</p>
+                    <p>{{ imovel.bairro }}</p>
+                    <a href="#" class="botao">Ver Detalhes</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - UniAnita | Aluguel de Imóveis</p>
+    </footer>
+    
+</body>
+</html>

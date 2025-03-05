@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncio de Casas para Dividir</title>
+    <link rel="stylesheet" href="../testecss/style_compartilhamento.css">
+</head>
+<body>
+    <header>
+        <h1>UniAnita - Aluguel de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="tela_inicial.html" target="_self">Início</a></li>
+                <li><a href="cadastrar_casa.html" target="_self">Cadastrar Residência</a></li>
+                <li><a href="compartilhamento.html" target="_self">Compartilhar Residência</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <h1>Anúncios de casas para compartilhamento</h1>
+        </div>
+
+        <div id="adsContainer">
+            <!-- Os anúncios serão adicionados aqui dinamicamente -->
+        </div>
+
+        <button class="btn" onclick="openHouseForm()">Adicionar novo anúncio</button>
+
+        <!-- Formulário de anúncio de casa -->
+        <div class="form-popup" id="houseForm">
+            <div class="form-container">
+                <h2>Formulário para Anunciar Casa</h2>
+                <form id="houseAdForm" onsubmit="submitAd(event)">
+                    <input type="text" id="announcerName" placeholder="Seu Nome" required><br>
+                    <input type="text" id="rentalPrice" placeholder="Preço do Aluguel" required><br>
+                    <input type="text" id="address" placeholder="Endereço" required><br>
+                    <input type="text" id="neighborhood" placeholder="Bairro" required><br>
+                    <textarea id="description" placeholder="Descrição do Imóvel" required></textarea><br>
+                    <button type="submit" class="btn">Adicionar Anúncio</button>
+                </form>
+                <button class="btn" onclick="closeHouseForm()">Fechar</button>
+            </div>
+        </div>
+
+        <!-- Formulário de interesse -->
+        <div class="form-popup" id="interestForm">
+            <div class="form-container">
+                <h2>Formulário de Interesse</h2>
+                <form onsubmit="handleSubmit(event)">
+                    <input type="text" id="fullName" placeholder="Nome Completo" required><br>
+                    <input type="text" id="contactNumber" placeholder="Número de Contato" required><br>
+                    <input type="email" id="email" placeholder="Email" required><br>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+                <button class="btn" onclick="closeForm()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - UniAnita | Aluguel de Imóveis</p>
+    </footer>
+
+    <script src="script_compartilhamento.js"></script>
+
+</body>
+</html>
