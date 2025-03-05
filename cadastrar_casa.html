@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Casa</title>
+    <link rel="stylesheet" href="../testecss/style_cadastrar.css">
+</head>
+<body>
+    <header>
+        <h1>UniAnita - Aluguel de Imóveis</h1>
+        <nav>
+            <ul>
+                <li><a href="tela_inicial.html" target="_self">Início</a></li>
+                <li><a href="cadastrar_casa.html" target="_self">Cadastrar Residência</a></li>
+                <li><a href="compartilhamento.html" target="_self">Compartilhar Residência</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="form-container">
+        <h2>Cadastre sua residência</h2>
+        <form id="formCadastrarCasa">
+            <label for="nome">Nome da Residência:</label>
+            <input type="text" id="nome" name="nome" required><br>
+        
+            <label for="valor">Valor (R$):</label>
+            <input type="text" id="valor" name="valor" required><br>
+        
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" required><br>
+        
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required><br>
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="XXX.XXX.XXX-XX" required><br>
+            
+            <label for="telefone">Número de Contato:</label>
+            <input type="tel" id="telefone" name="telefone" pattern="\(\d{2}\) \d{5}-\d{4}" placeholder="(XX) XXXXX-XXXX" required><br>
+
+            <label for="imagem">Imagem da Residência:</label>
+            <input type="file" id="imagem" name="imagem" required><br><br>
+
+            <!-- Campo para Descrição -->
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea><br><br>
+        
+            <button type="button" onclick="cadastrar()">Cadastrar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - UniAnita | Aluguel de Imóveis</p>
+    </footer>
+
+    <script src="../testejs/script_inicio.js"></script>
+</body>
+</html>
